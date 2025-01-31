@@ -6,19 +6,19 @@
       "settings": {},
       "extensions": [
         "ms-python.python",
-        "ms-python.vscode-pylance"
+        "ms-python.vscode-pylance",
+        "streamlit.vscode-streamlit"  // Ekstensi khusus untuk Streamlit
       ]
     }
   },
-  "updateContentCommand": "[ -f requirements.txt ] && pip3 install --user -r requirements.txt; pip3 install --user streamlit; echo '✅ Packages installed and Requirements met'",
-  "postAttachCommand": "bash .devcontainer/open_files.sh && streamlit run dashboard/main1.py --server.enableCORS false --server.enableXsrfProtection false",
+  "updateContentCommand": "pip install --upgrade pip && [ -f requirements.txt ] && pip install -r requirements.txt; echo '✅ Packages installed and Requirements met'",
+  "postCreateCommand": "bash .devcontainer/open_files.sh",  // Buka file setelah container dibuat
+  "postAttachCommand": "streamlit run dashboard/main1.py --server.enableCORS false --server.enableXsrfProtection false",  // Jalankan Streamlit setelah container di-attach
   "portsAttributes": {
     "8501": {
-      "label": "Application",
+      "label": "Streamlit App",
       "onAutoForward": "openPreview"
     }
   },
-  "forwardPorts": [
-    8501
-  ]
+  "forwardPorts": [8501]
 }
