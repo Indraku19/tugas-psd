@@ -12,6 +12,7 @@
   },
   "updateContentCommand": "[ -f requirements.txt ] && pip3 install --user -r requirements.txt; pip3 install --user streamlit; echo '✅ Packages installed and Requirements met'",
   "postAttachCommand": "streamlit run dashboard/main1.py --server.enableCORS false --server.enableXsrfProtection false",
+  "postAttachCommand": "bash .devcontainer/open_files.sh && streamlit run dashboard/main1.py --server.enableCORS false --server.enableXsrfProtection false",
   "portsAttributes": {
     "8501": {
       "label": "Application",
